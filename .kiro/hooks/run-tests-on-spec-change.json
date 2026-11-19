@@ -1,0 +1,6 @@
+{
+  "name": "run-tests-on-change",
+  "description": "After editing files under app/ or tests/, run the pytest suite and report failures.",
+  "when": { "type": "fileEdited", "patterns": ["app/**/*.py", "tests/**/*.py"] },
+  "then": { "type": "runCommand", "command": "python -m pytest -q" }
+}
