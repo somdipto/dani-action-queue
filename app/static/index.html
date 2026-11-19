@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dani Action Queue</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Dani Action Queue</h1>
+    <nav>
+      <button id="nav-queue" class="nav-btn active" onclick="showQueue()">Queue</button>
+      <button id="nav-audit" class="nav-btn" onclick="showAudit()">Audit</button>
+    </nav>
+  </header>
+
+  <div id="error-banner" class="error-banner hidden">
+    <span id="error-message"></span>
+    <button onclick="dismissError()">✕</button>
+  </div>
+
+  <main>
+    <!-- Queue view -->
+    <section id="queue-view">
+      <div class="toolbar">
+        <label for="state-filter">Filter by state:</label>
+        <select id="state-filter" onchange="loadQueue()">
+          <option value="">All</option>
+          <option value="draft">Draft</option>
+          <option value="approved">Approved</option>
+          <option value="executing">Executing</option>
+          <option value="done">Done</option>
+          <option value="failed">Failed</option>
+          <option value="rejected">Rejected</option>
+        </select>
+        <button onclick="loadQueue()">Refresh</button>
+      </div>
+      <table id="queue-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Executor</th>
+            <th>State</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="queue-tbody"></tbody>
+      </table>
+    </section>
+
+    <!-- Audit view -->
+    <section id="audit-view" class="hidden">
+      <div class="toolbar">
+        <button onclick="loadAudit()">Refresh</button>
+      </div>
+      <table id="audit-table">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Action ID</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Actor</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody id="audit-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+        </html>
